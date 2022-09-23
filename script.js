@@ -48,6 +48,25 @@ const closeModal = () => {
     }, 500);
 };
 
-cs('.pizzaInfo--cancelButton', '.pizzaInfo--cancelMobileButton').forEach( (item)=>{
+cs('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
     item.addEventListener('click', closeModal);
+});
+
+c('.pizzaInfo--qtmenos').addEventListener('click', ()=> {
+    if( qtPizza > 1){
+        qtPizza--;
+        c('.pizzaInfo--qt').innerHTML = qtPizza;
+    }
+});
+
+c('.pizzaInfo--qtmais').addEventListener('click', ()=> {
+    qtPizza++;
+    c('.pizzaInfo--qt').innerHTML = qtPizza;
+});
+
+cs('.pizzaInfo--size').forEach(( size, indexSize) => {
+    size.addEventListener('click', (e) =>{
+        c('.pizzaInfo--size.selected').classList.remove("selected");
+        size.classList.add('selected');
+    })
 });
